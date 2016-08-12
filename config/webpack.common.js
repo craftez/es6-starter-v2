@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
 const autoprefixer = require('autoprefixer');
 
 
@@ -15,8 +15,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack Starter Angular - kitconcept',
-            template: 'src/index.html',
+            title: 'Webpack Starter Angular',
+            template: 'src/public/index.html',
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
@@ -30,12 +30,6 @@ module.exports = {
 
         new ngAnnotatePlugin({
             add: true
-        }),
-
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            proxy: 'http://localhost:8080'
         })
 
     ],

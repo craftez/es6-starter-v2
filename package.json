@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --inline --port 3000 --content-base dist/",
-    "analyze": "webpack --json | webpack-bundle-size-analyzer",
+    "server": "webpack-dev-server --inline --color --port 3000 --content-base dist/",
     "clean": "rimraf dist/**/*",
     "build": "webpack --config config/webpack.dev.js --watch --progress --color",
     "build:prod": "npm run clean && npm install -f && set NODE_ENV=production && npm run test && npm run lint && webpack --config config/webpack.prod.js --progress --color -p",
     "lint": "eslint src/ --fix --color",
-    "start": "npm run clean && npm run build",
+    "start": "npm run clean  && npm install -f && npm run build",
     "test": "karma start",
     "test:debug": "karma start karma.conf.js --log-level=debug --single-run=False",
     "test:watch": "karma start karma.conf.js --auto-watch=true --single-run=False"
@@ -31,6 +30,7 @@
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.13.2",
+    "browser-sync": "^2.14.0",
     "browser-sync-webpack-plugin": "^1.1.2",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^3.0.1",

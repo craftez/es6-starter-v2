@@ -46,5 +46,7 @@ describe('Example', () => {
       expect(component.controller).to.equal(ExampleController);
     });
   });
+  
+  //TODO: Add Servuce test
 
 });

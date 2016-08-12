@@ -6,7 +6,6 @@ const commonConfig = require('./webpack.common.js');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = webpackMerge(commonConfig, {
