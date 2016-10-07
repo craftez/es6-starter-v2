@@ -22,7 +22,8 @@
     "angular/di": [
       2,
       "$inject"
-    ]
+    ],
+    "angular/no-service-method": 0
   },
   "parser": "babel-eslint",
   "env": {

@@ -1,0 +1,22 @@
+<div class="bookmarks">
+    <div ng-repeat="bookmark in $ctrl.bookmarks | filter: $ctrl.getCurrentCategory().name">
+        <button class="close"
+            ng-click="$ctrl.deleteBookmark(bookmark)">x</button>
+        <button class="btn btn-link" ng-click="$ctrl.editBookmark(bookmark)">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <a href="{{bookmark.url}}" target="_blank" ng-bind="bookmark.title"></a>
+    </div>
+    <div ng-if="$ctrl.getCurrentCategory()">
+        <button class="btn btn-link"
+            ng-if="!$ctrl.currentBookmark"
+            ng-click="$ctrl.createNewBookmark()">
+            <span class="glyphicon glyphicon-plus"></span>
+            Create Bookmark
+        </button>
+    </div>
+    <save-bookmark ng-if="$ctrl.currentBookmark"
+        bookmark="$ctrl.currentBookmark"
+        save="$ctrl.onSave(bookmark)"
+        cancel="$ctrl.reset()"></save-bookmark>
+</div>

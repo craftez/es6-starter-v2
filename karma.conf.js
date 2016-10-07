@@ -4,12 +4,21 @@ module.exports = function(config) {
 		basePath: '',
 		
 		//frameworks to use for testing
-		frameworks: ['mocha', 'chai'],
+		frameworks: ['jasmine'],
 		
 		//files globs to load
 		files: [{pattern: 'spec.bundle.js', watched: false}],
 		
 		exclude: [],
+
+		plugins: [
+			require("karma-jasmine"),
+			require("karma-phantomjs-launcher"),
+			require("karma-spec-reporter"),
+			require("karma-coverage"),
+			require("karma-sourcemap-loader"),
+			require("karma-webpack")
+		],
 		
 		//preprocessors to use
 		preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap']},
@@ -31,7 +40,7 @@ module.exports = function(config) {
 		  noInfo: true // prevent console spamming when running in Karma!
 		},
 		
-		reporters: ['mocha', 'progress', 'coverage'],
+		reporters: ['spec', 'coverage'],
 
 		coverageReporter: {
 			dir: 'coverage/',
@@ -50,7 +59,7 @@ module.exports = function(config) {
 		
 		autoWatch: true,
 		
-		browsers: ['Chrome'],
+		browsers: ['PhantomJS'],
 		
 		// if true, Karma runs tests once and exits
 		singleRun: true

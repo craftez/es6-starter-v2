@@ -3,9 +3,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const autoprefixer = require('autoprefixer');
-
 
 module.exports = {
     entry: './src/index.js',
@@ -28,6 +28,10 @@ module.exports = {
 
         new ExtractTextPlugin('[name].[hash].css'),
 
+        new CopyWebpackPlugin([{
+            from: 'src/public'
+        }]),
+
         new ngAnnotatePlugin({
             add: true
         })
@@ -42,7 +46,7 @@ module.exports = {
             }],
         loaders: [
             { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader!css-loader') },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css-loader') },
             { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap')},
             { test: /\.html$/, loader: 'raw' },
             // inline base64 URLs for <=8k images, direct URLs for the rest
